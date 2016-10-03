@@ -1,9 +1,8 @@
-package biblioteca;
+package com.twu.biblioteca;
 
-import biblioteca.model.UserAccount;
-import biblioteca.businessLogic.extend.ConsoleService;
-import biblioteca.businessLogic.extend.LibraryService;
-import biblioteca.businessLogic.extend.MenuService;
+import com.twu.biblioteca.model.UserAccount;
+import com.twu.biblioteca.businessLogic.extend.ConsoleService;
+import com.twu.biblioteca.businessLogic.extend.LibraryService;
 
 public class Main {
 

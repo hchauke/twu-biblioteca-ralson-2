@@ -1,13 +1,12 @@
-package biblioteca;
+package com.twu.biblioteca;
 
 
-import biblioteca.enumeration.MenuTab;
-import biblioteca.enumeration.Role;
-import biblioteca.model.Menu;
-import biblioteca.businessLogic.extend.BookService;
-import biblioteca.businessLogic.ItemService;
-import biblioteca.businessLogic.extend.MenuService;
-import biblioteca.businessLogic.extend.MovieService;
+import com.twu.biblioteca.enumeration.MenuTab;
+import com.twu.biblioteca.enumeration.Role;
+import com.twu.biblioteca.model.Menu;
+import com.twu.biblioteca.businessLogic.extend.BookService;
+import com.twu.biblioteca.businessLogic.ItemService;
+import com.twu.biblioteca.businessLogic.extend.MovieService;
 
 public class LibraryRoleMenus {
 

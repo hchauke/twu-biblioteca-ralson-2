@@ -1,7 +1,7 @@
-package biblioteca.businessLogic;
+package com.twu.biblioteca.businessLogic;
 
-import biblioteca.library.LibraryManager;
-import biblioteca.model.UserAccount;
+import com.twu.biblioteca.library.LibraryManager;
+import com.twu.biblioteca.model.UserAccount;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

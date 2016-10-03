@@ -1,15 +1,15 @@
-package biblioteca.library;
+package com.twu.biblioteca.library;
 
-import biblioteca.enumeration.Role;
-import biblioteca.model.Book;
-import biblioteca.model.Movie;
-import biblioteca.model.UserAccount;
+import com.twu.biblioteca.enumeration.Role;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.UserAccount;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static biblioteca.library.LibraryManager.checkOutABook;
-import static biblioteca.library.LibraryManager.checkOutAMovie;
+import static com.twu.biblioteca.library.LibraryManager.checkOutABook;
+import static com.twu.biblioteca.library.LibraryManager.checkOutAMovie;
 
 /**
  * Created by hlulani on 2016/10/03.

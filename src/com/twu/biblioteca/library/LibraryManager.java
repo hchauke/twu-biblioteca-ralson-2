@@ -1,12 +1,10 @@
-package biblioteca.library;
+package com.twu.biblioteca.library;
 
-import biblioteca.model.Book;
-import biblioteca.model.Movie;
-import biblioteca.model.UserAccount;
+import com.twu.biblioteca.model.Book;
+import com.twu.biblioteca.model.Movie;
+import com.twu.biblioteca.model.UserAccount;
 
 import java.util.Map;
-
-import static biblioteca.library.Lists.*;
 
 public class LibraryManager {
 
@@ -41,11 +39,11 @@ public class LibraryManager {
     }
 
     public static void returnCheckedMovie(String movieId) {
-        checkedMovies.remove(movieId);
+        Lists.checkedMovies.remove(movieId);
     }
 
     public static UserAccount findUserAccount(String userId, String password) {
-        UserAccount userAccount = userAccounts.get(userId);
+        UserAccount userAccount = Lists.userAccounts.get(userId);
         return (userAccount == null || !userAccount.checkPassword(password)) ? null : userAccount;
     }
 

@@ -1,6 +1,6 @@
-package biblioteca.model;
+package com.twu.biblioteca.model;
 
-import biblioteca.enumeration.MenuTab;
+import com.twu.biblioteca.enumeration.MenuTab;
 
 public class Menu {
 

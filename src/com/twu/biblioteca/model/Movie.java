@@ -1,4 +1,4 @@
-package biblioteca.model;
+package com.twu.biblioteca.model;
 
 public class Movie {
     private final String id;

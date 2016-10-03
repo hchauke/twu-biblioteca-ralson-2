@@ -1,4 +1,4 @@
-package biblioteca.model;
+package com.twu.biblioteca.model;
 
 public class Book {
     private final String id;

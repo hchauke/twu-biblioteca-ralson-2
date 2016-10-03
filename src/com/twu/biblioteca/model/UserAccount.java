@@ -1,7 +1,7 @@
-package biblioteca.model;
+package com.twu.biblioteca.model;
 
 
-import biblioteca.enumeration.Role;
+import com.twu.biblioteca.enumeration.Role;
 
 public class UserAccount {
     private final String userId;

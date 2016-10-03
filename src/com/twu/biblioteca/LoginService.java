@@ -1,9 +1,9 @@
-package biblioteca;
+package com.twu.biblioteca;
 
 
-import biblioteca.businessLogic.extend.ConsoleService;
-import biblioteca.library.LibraryManager;
-import biblioteca.model.UserAccount;
+import com.twu.biblioteca.businessLogic.extend.ConsoleService;
+import com.twu.biblioteca.library.LibraryManager;
+import com.twu.biblioteca.model.UserAccount;
 
 public class LoginService {
 
