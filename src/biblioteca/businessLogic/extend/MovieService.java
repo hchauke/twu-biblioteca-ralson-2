@@ -1,5 +1,6 @@
-package biblioteca.service;
+package biblioteca.businessLogic.extend;
 
+import biblioteca.businessLogic.ItemService;
 import biblioteca.library.LibraryManager;
 import biblioteca.model.Movie;
 
@@ -16,12 +17,12 @@ public class MovieService extends ItemService<Movie> {
     private final String UNSUCCESSFUL_RETURN_MOVIE_MESSAGE = "That is not a valid movie to return.";
 
     @Override
-    protected Map<String, Movie> getItemsFromRepository() {
+    protected Map<String, Movie> getItemsFromLibrary() {
         return LibraryManager.listMovies();
     }
 
     @Override
-    protected Map<String, String> getCheckedItemsFromRepository() {
+    protected Map<String, String> getCheckedItemsFromLibrary() {
         return LibraryManager.getCheckedMovies();
     }
 
@@ -36,13 +37,13 @@ public class MovieService extends ItemService<Movie> {
     }
 
     @Override
-    protected String saveCheckoutItemToRepository(String itemId, String readerId) {
-        LibraryManager.saveCheckoutMovie(itemId, readerId);
+    protected String saveCheckoutItemToLibrary(String itemId, String readerId) {
+        LibraryManager.checkOutAMovie(itemId, readerId);
         return SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE;
     }
 
     @Override
-    protected String returnCheckedItemToRepository(String itemId) {
+    protected String returnCheckedItemToLibrary(String itemId) {
         LibraryManager.returnCheckedMovie(itemId);
         return SUCCESSFUL_RETURN_MOVIE_MESSAGE;
     }

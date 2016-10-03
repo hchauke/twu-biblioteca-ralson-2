@@ -1,4 +1,4 @@
-package biblioteca.service;
+package biblioteca.businessLogic.extend;
 
 import biblioteca.model.Menu;
 
@@ -15,11 +15,11 @@ public class ConsoleService {
         bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public void showWelcome() {
-        System.out.println("\n===============Welcome to the Biblioteca!===============");
+    public void welcomeMessage() {
+        System.out.println("\n===============Welcome to the Biblioteca!===============\n");
     }
 
-    public void sayBye() {
+    public void goodByeMessage() {
         System.out.println("\n===============Thank you for using the Biblioteca! Bye!===============\n");
     }
 
@@ -33,7 +33,7 @@ public class ConsoleService {
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
-//                e.printStackTrace();
+                e.printStackTrace();
             }
         }
         return 0;
@@ -43,7 +43,7 @@ public class ConsoleService {
         System.out.println();
         int size = menus.size();
         for (int index = 0; index < size; ++index) {
-            System.out.print((index+1) + "." + menus.get(index).getPrompt());
+            System.out.print((index+1) + "." + menus.get(index).getUserChoice());
             if (index == size - 1) {
                 System.out.println();
             } else {

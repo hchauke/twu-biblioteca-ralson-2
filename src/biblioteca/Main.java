@@ -1,10 +1,9 @@
 package biblioteca;
 
 import biblioteca.model.UserAccount;
-import biblioteca.service.AccountService;
-import biblioteca.service.ConsoleService;
-import biblioteca.service.LibraryService;
-import biblioteca.service.MenuService;
+import biblioteca.businessLogic.extend.ConsoleService;
+import biblioteca.businessLogic.extend.LibraryService;
+import biblioteca.businessLogic.extend.MenuService;
 
 public class Main {
 
@@ -12,17 +11,17 @@ public class Main {
 
         ConsoleService consoleService = new ConsoleService();
         consoleService.printMessage("Hint: Login credentials  \n[ Library id: 100-0001, password : 123456, role: CUSTOMER ]\n" + "[ Library id: 100-0002, password: 123456, role: LIBRARIAN ]\n");
-        consoleService.showWelcome();
+        consoleService.welcomeMessage();
 
-        AccountService accountService = new AccountService();
-        UserAccount loginUser = accountService.loginManager(consoleService, 5);
+        LoginService loginService = new LoginService();
+        UserAccount loginUser = loginService.loginManager(consoleService, 5);
 
         while(loginUser != null) {
-            MenuService menuService = LibraryFactory.generateMenuServiceByRole(loginUser.getRole());
+            MenuService menuService = LibraryRoleMenus.generateMenuServiceByRole(loginUser.getRole());
             LibraryService libraryService = new LibraryService(loginUser, menuService, consoleService);
             libraryService.run();
-            consoleService.showWelcome();
-            loginUser = accountService.loginManager(consoleService, 5);
+            consoleService.welcomeMessage();
+            loginUser = loginService.loginManager(consoleService, 5);
         }
 
     }

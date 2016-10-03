@@ -1,5 +1,6 @@
-package biblioteca.service;
+package biblioteca.businessLogic.extend;
 
+import biblioteca.businessLogic.ItemService;
 import biblioteca.library.LibraryManager;
 import biblioteca.model.Book;
 
@@ -16,12 +17,12 @@ public class BookService extends ItemService<Book> {
     private final String UNSUCCESSFUL_RETURN_BOOK_MESSAGE = "That is not a valid book to return.";
 
     @Override
-    protected Map<String, String> getCheckedItemsFromRepository() {
+    protected Map<String, String> getCheckedItemsFromLibrary() {
         return LibraryManager.getCheckedBooks();
     }
 
     @Override
-    protected Map<String, Book> getItemsFromRepository() {
+    protected Map<String, Book> getItemsFromLibrary() {
         return LibraryManager.listBooks();
     }
 
@@ -36,13 +37,13 @@ public class BookService extends ItemService<Book> {
     }
 
     @Override
-    protected String saveCheckoutItemToRepository(String itemId, String readerId) {
-        LibraryManager.saveCheckoutBook(itemId, readerId);
+    protected String saveCheckoutItemToLibrary(String itemId, String readerId) {
+        LibraryManager.checkOutABook(itemId, readerId);
         return SUCCESSFUL_CHECKOUT_BOOK_MESSAGE;
     }
 
     @Override
-    protected String returnCheckedItemToRepository(String itemId) {
+    protected String returnCheckedItemToLibrary(String itemId) {
         LibraryManager.returnCheckedBook(itemId);
         return SUCCESSFUL_RETURN_BOOK_MESSAGE;
     }

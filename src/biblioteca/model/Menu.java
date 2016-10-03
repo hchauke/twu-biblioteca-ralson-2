@@ -1,22 +1,22 @@
 package biblioteca.model;
 
-import biblioteca.enumeration.Action;
+import biblioteca.enumeration.MenuTab;
 
 public class Menu {
 
-    private String prompt;
-    private Action action;
+    private String userChoice;
+    private MenuTab menuTab;
 
-    public Menu(String prompt, Action action) {
-        this.prompt = prompt;
-        this.action = action;
+    public Menu(String userChoice, MenuTab menuTab) {
+        this.userChoice = userChoice;
+        this.menuTab = menuTab;
     }
 
-    public String getPrompt() {
-        return prompt;
+    public String getUserChoice() {
+        return userChoice;
     }
 
-    public Action getAction() {
-        return action;
+    public MenuTab getMenuTab() {
+        return menuTab;
     }
 }

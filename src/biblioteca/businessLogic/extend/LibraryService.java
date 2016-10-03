@@ -1,15 +1,14 @@
-package biblioteca.service;
+package biblioteca.businessLogic.extend;
 
+import biblioteca.businessLogic.ItemService;
 import biblioteca.model.Menu;
 import biblioteca.model.UserAccount;
 
 import java.util.List;
 
-import static biblioteca.enumeration.Action.*;
-
 public class LibraryService {
     private final String INVALID_OPTION_MESSAGE = "Select a valid option!";
-    private final String NOT_SUPPORT_ACTION_ERROR = "Not Support This Action!";
+    private final String NOT_SUPPORT_ACTION_ERROR = "Not Support This MenuTab!";
     private final String SYSTEM_PAUSE_MESSAGE = "\n************Press enter to continue!***********";
     private final MenuService menuService;
     private final ConsoleService consoleService;
@@ -22,7 +21,9 @@ public class LibraryService {
     }
 
     public void run() {
+
         boolean isRunning = true;
+
         while (isRunning) {
             List<Menu> menus = menuService.listMainMenus();
             consoleService.printMenuPrompt(menus);
@@ -43,8 +44,8 @@ public class LibraryService {
     private boolean handleAction(List<Menu> menus, int option) {
         Menu menu = menus.get(option - 1);
         ItemService itemService = menuService.getItemService(menu);
-        String prompt = menu.getPrompt().toLowerCase();
-        switch (menu.getAction()) {
+        String prompt = menu.getUserChoice().toLowerCase();
+        switch (menu.getMenuTab()) {
             case LIST_ITEMS:
                 listItems(itemService);
                 break;
@@ -61,7 +62,7 @@ public class LibraryService {
                 consoleService.printMessage(loginUser.getUserProfile());
                 break;
             case QUIT:
-                consoleService.sayBye();
+                consoleService.goodByeMessage();
                 return false;
             default:
                 consoleService.printError(NOT_SUPPORT_ACTION_ERROR);
@@ -71,6 +72,7 @@ public class LibraryService {
     }
 
     private void listCheckedItems(ItemService itemService) {
+
         List<String> checkedItemsInfo = itemService.listCheckedItems();
         for (String info : checkedItemsInfo) {
             consoleService.printMessage(info);

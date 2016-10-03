@@ -1,16 +1,16 @@
-package biblioteca.service;
+package biblioteca;
 
 
+import biblioteca.businessLogic.extend.ConsoleService;
 import biblioteca.library.LibraryManager;
 import biblioteca.model.UserAccount;
 
-public class AccountService {
+public class LoginService {
 
     private UserAccount loginUser;
 
     public boolean login(String loginId, String password) {
-        if (loginId == null || loginId.isEmpty() ||
-                password == null || password.isEmpty()) {
+        if (loginId == null || loginId.isEmpty() || password == null || password.isEmpty()) {
             return false;
         }
         loginUser = LibraryManager.findUserAccount(loginId, password);
@@ -35,7 +35,7 @@ public class AccountService {
                 --attempts;
             }
         }
-        consoleService.printMessage("Login Successfully! Welcome to the Biblioteca!");
+        consoleService.printMessage("Login Successfully!\n");
         consoleService.printMessage(loginUser.getUserProfile());
         return loginUser;
     }

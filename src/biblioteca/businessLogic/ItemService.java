@@ -1,4 +1,4 @@
-package biblioteca.service;
+package biblioteca.businessLogic;
 
 import biblioteca.library.LibraryManager;
 import biblioteca.model.UserAccount;
@@ -11,9 +11,9 @@ import java.util.Map;
 public abstract class ItemService<T> {
 
     public List<T> listItems() {
-        Map<String, T> items = getItemsFromRepository();
+        Map<String, T> items = getItemsFromLibrary();
 
-        Map<String, String> checkedItems = getCheckedItemsFromRepository();
+        Map<String, String> checkedItems = getCheckedItemsFromLibrary();
 
         List<T> itemList = new ArrayList<T>();
 
@@ -28,18 +28,23 @@ public abstract class ItemService<T> {
 
     public String checkoutItem(String itemId, String readerId) {
         return isExistItem(itemId) && !isCheckedOut(itemId) ?
-                saveCheckoutItemToRepository(itemId, readerId) : getUnsuccessfulCheckoutMessage();
+                saveCheckoutItemToLibrary(itemId, readerId) : getUnsuccessfulCheckoutMessage();
     }
 
     public String returnCheckedItem(String itemId, String readerId) {
-        return isCheckedOut(itemId, readerId) ? returnCheckedItemToRepository(itemId) : getUnsuccessfulReturnMessage();
+        return isCheckedOut(itemId, readerId) ? returnCheckedItemToLibrary(itemId) : getUnsuccessfulReturnMessage();
     }
 
     public List<String> listCheckedItems() {
-        Map<String, T> items = getItemsFromRepository();
+
+        Map<String, T> items = getItemsFromLibrary();
+
         Map<String, UserAccount> users = LibraryManager.getUserAccounts();
-        Map<String, String> checkedItems = getCheckedItemsFromRepository();
+
+        Map<String, String> checkedItems = getCheckedItemsFromLibrary();
+
         List<String> checkedItemInfo = new LinkedList<String>();
+
         for (String itemId : checkedItems.keySet()) {
             T item = items.get(itemId);
             UserAccount user = users.get(checkedItems.get(itemId));
@@ -49,26 +54,26 @@ public abstract class ItemService<T> {
     }
 
     private boolean isExistItem(String itemId) {
-        return getItemsFromRepository().containsKey(itemId);
+        return getItemsFromLibrary().containsKey(itemId);
     }
 
     private boolean isCheckedOut(String itemId) {
-        return getCheckedItemsFromRepository().containsKey(itemId);
+        return getCheckedItemsFromLibrary().containsKey(itemId);
     }
 
     private boolean isCheckedOut(String itemId, String readerId) {
-        return isCheckedOut(itemId) && getCheckedItemsFromRepository().containsValue(readerId);
+        return isCheckedOut(itemId) && getCheckedItemsFromLibrary().containsValue(readerId);
     }
 
-    protected abstract Map<String, T> getItemsFromRepository();
+    protected abstract Map<String, T> getItemsFromLibrary();
 
-    protected abstract Map<String, String> getCheckedItemsFromRepository();
+    protected abstract Map<String, String> getCheckedItemsFromLibrary();
 
     protected abstract void sortItemList(List<T> itemList);
 
-    protected abstract String saveCheckoutItemToRepository(String itemId, String readerId);
+    protected abstract String saveCheckoutItemToLibrary(String itemId, String readerId);
 
-    protected abstract String returnCheckedItemToRepository(String itemId);
+    protected abstract String returnCheckedItemToLibrary(String itemId);
 
     protected abstract String getUnsuccessfulCheckoutMessage();
 
