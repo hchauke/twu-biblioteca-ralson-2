@@ -28,8 +28,8 @@ public class LibraryManager {
         userAccounts.put("100-0001", new UserAccount("100-0001", "123456", "Hlulani", "hchauke@thoughtworks.com", "0603524544", Role.CUSTOMER.CUSTOMER));
         userAccounts.put("100-0002", new UserAccount("100-0002", "123456", "Ralson", "hluly222@gmail.com", "0792225045", Role.LIBRARIAN));
 
-        saveCheckoutBook("B0002", "333-3333");
-        saveCheckoutMovie("M0002", "111-1111");
+        saveCheckoutBook("B1", "100-0001");
+        saveCheckoutMovie("M1", "100-0002");
     }
 
     public static Map<String, Book> listBooks() {
